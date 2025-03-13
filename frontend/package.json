@@ -1,0 +1,36 @@
+{
+  "name": "certain-chasm",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "fmt": "prettier --write .",
+    "prepare": "panda codegen"
+  },
+  "dependencies": {
+    "@astrojs/react": "^2.2.1",
+    "@react-three/drei": "^9.78.1",
+    "@react-three/fiber": "^8.13.4",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@types/three": "^0.153.0",
+    "astro": "^2.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "three": "^0.154.0"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.6.0",
+    "@types/node": "^20.4.1",
+    "prettier": "2.8.8",
+    "prettier-plugin-astro": "^0.10.0"
+  },
+  "volta": {
+    "node": "16.17.0",
+    "yarn": "1.22.19"
+  }
+}

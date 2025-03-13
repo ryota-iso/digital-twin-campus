@@ -1,0 +1,48 @@
+---
+import { config } from '@site.config'
+import '@/src/assets/global.css'
+
+const { title, description, ogImageUrl } = config.siteMeta
+
+const pathName = Astro.url.pathname
+const pageUrl: string = `${config.siteRoot}${pathName || ''}`
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Base -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.svg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- TitleやDescription -->
+    <title>{title}</title>
+    <meta name="description" content={description.replace(/\r?\n/g, '')} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="generator" content={Astro.generator} />
+    <!-- OGP系 -->
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site" content={title} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<script>
+  const viewport = document.querySelector('meta[name="viewport"]') as HTMLMetaElement
+  function switchViewport() {
+    const value = window.outerWidth > 360 ? 'width=device-width,initial-scale=1' : 'width=360'
+    if (viewport.getAttribute('content') !== value) {
+      viewport.setAttribute('content', value)
+    }
+  }
+  addEventListener('resize', switchViewport, false)
+  switchViewport()
+</script>
